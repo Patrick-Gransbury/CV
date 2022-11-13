@@ -85,6 +85,16 @@ a:hover {
   text-decoration: none;
 }
 
+a h4 {
+  opacity: 0;
+  padding-bottom: 20px;
+}
+
+a:hover h4 {
+  opacity: 1;
+  padding-bottom: 20px;
+}
+
 h1,
 h2,
 h3,
@@ -140,7 +150,7 @@ h6 {
   z-index: 9997;
   transition: all 0.5s;
   padding: 0 15px;
-  background: #040b14;
+  background: #173b6c;
   overflow-y: auto;
 }
 
@@ -237,7 +247,7 @@ h6 {
   font-size: 24px;
   padding-right: 8px;
   color: #6f7180;
-}
+}nav-menu
 
 .nav-menu a:hover,
 .nav-menu .active,
