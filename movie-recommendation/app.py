@@ -7,14 +7,10 @@ import re
 import ast
 import requests
 
-from werkzeug.middleware.proxy_fix import ProxyFix
-
 TMDB_API_KEY = 'a1fe2f0ac92d2dd849674115d68777a5'
 
 app = Flask(__name__)
 CORS(app)
-
-app.wsgi_app = ProxyFix(app.wsgi_app)
 
 movies = pd.read_csv('processed_movies.csv')
 movies_titles = movies['title'].tolist()
@@ -134,11 +130,6 @@ def get_suggestions():
     user_input = request.args.get('query')
     suggestions = get_suggested_titles(user_input)
     return jsonify({'suggestions': suggestions})
-
-def lambda_handler(event, context):
-    from zappa.middleware import ZappaMiddleware
-    app.wsgi_app = ZappaMiddleware(app.wsgi_app)
-    return app
 
 if __name__ == '__main__':
     app.run(debug=True)
